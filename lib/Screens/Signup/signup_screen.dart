@@ -50,28 +50,6 @@ class _SignUpState extends State<SignUpScreen> {
     }
   }
 
-  Future<void> _onGoogleSignInPress(BuildContext context) async {
-    final response = await gotrueClient.signIn(provider: Provider.google);
-
-    if (response.error != null) {
-      alertModal.show(context,
-          title: 'Google Sign in failed', message: response.error!.message);
-      _btnController.reset();
-    } else {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setString(PERSIST_SESSION_KEY, response.data!.persistSessionString);
-      final title = 'Welcome ${response.data!.user!.email}';
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return WelcomeScreen(title);
-          },
-        ),
-      );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -116,15 +94,6 @@ class _SignUpState extends State<SignUpScreen> {
                 press: () {
                   Navigator.of(context).pushReplacementNamed(SIGNIN_SCREEN);
                 }),
-            SizedBox(height: 15.0),
-            RoundedLoadingButton(
-              child: Text('Google sign in',
-                  style: TextStyle(fontSize: 20, color: Colors.white)),
-              controller: _btnController,
-              onPressed: () {
-                _onGoogleSignInPress(context);
-              },
-            ),
           ],
         ),
       ),

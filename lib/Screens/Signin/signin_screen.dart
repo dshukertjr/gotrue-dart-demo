@@ -20,9 +20,11 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInState extends State<SignInScreen> {
   final RoundedLoadingButtonController _signInEmailController =
-      new RoundedLoadingButtonController();
+      RoundedLoadingButtonController();
   final RoundedLoadingButtonController _signInGithubController =
-      new RoundedLoadingButtonController();
+      RoundedLoadingButtonController();
+  final RoundedLoadingButtonController _googleBtnController =
+      RoundedLoadingButtonController();
   var email = '';
   var password = '';
 
@@ -51,6 +53,16 @@ class _SignInState extends State<SignInScreen> {
 
   void _onSignInWithGithub(BuildContext context) async {
     final response = await gotrueClient.signIn(provider: Provider.github);
+    if (await canLaunch(response.url!)) {
+      print('response.url: ${response.url}');
+      await launch(response.url!);
+    } else {
+      throw 'Could not launch ${response.url}';
+    }
+  }
+
+  Future<void> _onGoogleSignInPress(BuildContext context) async {
+    final response = await gotrueClient.signIn(provider: Provider.google);
     if (await canLaunch(response.url!)) {
       print('response.url: ${response.url}');
       await launch(response.url!);
@@ -107,6 +119,16 @@ class _SignInState extends State<SignInScreen> {
             //     _onSignInWithGithub(context);
             //   },
             // ),
+            SizedBox(height: 15.0),
+            RoundedLoadingButton(
+              child: Text('Google sign in',
+                  style: TextStyle(fontSize: 20, color: Colors.white)),
+              controller: _googleBtnController,
+              onPressed: () {
+                _onGoogleSignInPress(context);
+              },
+            ),
+
             SizedBox(height: 35.0),
             LinkButton(
                 text: "Forgot your password ?",

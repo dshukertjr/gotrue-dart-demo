@@ -1,4 +1,4 @@
-package com.supabase.gotruedemo
+package com.example.gotruedartdemo
 
 import io.flutter.embedding.android.FlutterActivity
 
