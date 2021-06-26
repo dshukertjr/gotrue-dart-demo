@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
+
 import 'package:gotrue_dart_example/components/alert_modal.dart';
 import 'package:gotrue_dart_example/components/link_button.dart';
 import 'package:gotrue_dart_example/components/rounded_input_field.dart';
 import 'package:gotrue_dart_example/constants.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 class PasswordRecoverScreen extends StatefulWidget {
-  PasswordRecoverScreen({Key key}) : super(key: key);
+  PasswordRecoverScreen({Key? key}) : super(key: key);
 
   @override
   _PasswordRecoverState createState() => _PasswordRecoverState();
@@ -22,7 +23,7 @@ class _PasswordRecoverState extends State<PasswordRecoverScreen> {
     if (response.error != null) {
       alertModal.show(context,
           title: 'Send password recovery failed',
-          message: response.error.message);
+          message: response.error!.message);
       _btnController.reset();
     } else {
       alertModal.show(context,

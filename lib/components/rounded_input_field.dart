@@ -4,9 +4,9 @@ class RoundedInputField extends StatelessWidget {
   final String hintText;
   final ValueChanged<String> onChanged;
   const RoundedInputField({
-    Key key,
-    this.hintText,
-    this.onChanged,
+    Key? key,
+    required this.hintText,
+    required this.onChanged,
   }) : super(key: key);
 
   @override

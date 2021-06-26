@@ -3,7 +3,7 @@ description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: "none" # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -18,17 +18,16 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.0
-  gotrue: ^0.0.1-dev.6
-  shared_preferences: ^0.5.12+4
-  rounded_loading_button: ^1.0.0
-  url_launcher: ^5.7.10
+  gotrue: ^0.0.5
+  shared_preferences: ^2.0.6
+  rounded_loading_button: ^2.0.5
+  url_launcher: ^6.0.7
 
 dev_dependencies:
   flutter_test:
